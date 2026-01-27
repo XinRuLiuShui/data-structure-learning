@@ -10,8 +10,6 @@ typedef struct {
 	int last;	//指向最后一个节点的位置，传递数据时方便
 }SequenceList;
 
-SequenceList* l_Ptr;
-
 
 //初始化
 SequenceList* Init();
