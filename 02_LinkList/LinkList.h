@@ -12,7 +12,15 @@ typedef struct node {
 	struct node* pNext;
 }LinkListNode;
 
+int GetSizeOfLinkList(LinkListNode* pHead);
+LinkListNode* GetNodeFromLinkList(LinkListNode* pHead, int pos);
+int InsertAfterIntoLinkList(LinkListNode* ptr, ElemType value);
+int InsertBeforeIntoLinkList(LinkListNode* pHead, LinkListNode* ptr, ElemType value);
 LinkListNode* Create_Rear_LinkList(ElemType arr[], int length);
 LinkListNode* Create_Front1_LinkList(ElemType arr[], int length);
 LinkListNode* Create_Front2_LinkList(ElemType arr[], int length);
 LinkListNode* Create_Front3_LinkList(ElemType arr[], int length);
+
+LinkListNode* DeleteAfterLinkList(LinkListNode* ptr);
+LinkListNode* DeleteSpecifyLinkList(LinkListNode* pHead, int pos);
+void ShowLinkList(LinkListNode* pHead);

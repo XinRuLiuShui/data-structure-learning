@@ -30,8 +30,8 @@ int GetSizeOfLinkList(LinkListNode* pHead)
 }
 
 //取元素
-// seq--链表头指针 pos--编号位置
-LinkListNode* GetElemFromLinkList(LinkListNode* pHead, int pos)
+// pHead--链表头指针 pos--编号位置
+LinkListNode* GetNodeFromLinkList(LinkListNode* pHead, int pos)
 {
 	//if (!pHead || pos == 0 || pos > GetSizeOfLinkList(pHead))
 	//{
@@ -160,8 +160,112 @@ LinkListNode* Create_Front3_LinkList(ElemType arr[], int length)
 	return pHead;
 }
 
+//插入节点  在指定位置之后插入节点
+int InsertAfterIntoLinkList(LinkListNode* ptr, ElemType value)
+{
+	if (!ptr)
+	{
+		return FALSE;
+	}
+	LinkListNode* p;
+	p = (LinkListNode*)malloc(sizeof(LinkListNode));
+	p->data = value;
+	p->pNext = ptr->pNext;
+	ptr->pNext = p;
+	return TRUE;
+}
 
-//
+
+//插入节点  在指定位置之前插入节点
+int InsertBeforeIntoLinkList(LinkListNode* pHead, LinkListNode* ptr, ElemType value)
+{
+	if (!pHead || !ptr)
+	{
+		return FALSE;
+	}
+	LinkListNode* pre, * p;
+	pre = pHead;
+	while (pre && pre->pNext != ptr)
+	{
+		pre = pre->pNext;
+	}
+	if (!pre)
+	{
+		return FALSE;
+	}
+	p = (LinkListNode*)malloc(sizeof(LinkListNode));
+	p->data = value;
+	p->pNext = pre->pNext;
+	pre->pNext = p;
+	return TRUE;
+}
+
+//删除节点  在指定位置删除后继节点
+LinkListNode* DeleteAfterLinkList(LinkListNode* ptr)
+{
+	if (!ptr)
+	{
+		return NULL;
+	}
+	LinkListNode* backPtr;
+	backPtr = ptr->pNext;
+	ptr->pNext = backPtr->pNext;
+	return backPtr;
+}
+
+//删除第i个节点	假定头节点为第0个节点
+LinkListNode* DeleteSpecifyLinkList(LinkListNode* pHead, int pos)
+{
+	if (!pHead || pos <= 0)
+	{
+		return NULL;
+	}
+	LinkListNode* pre;
+	//获取要删除节点的前一个节点
+	pre = GetNodeFromLinkList(pHead, pos - 1);
+	if (!pre && !pre->pNext)
+	{
+		return NULL;
+	}
+	LinkListNode* ptr;
+	ptr = DeleteAfterLinkList(pre);
+	return ptr;
+
+	//LinkListNode* q = pHead;
+	//LinkListNode* pre = NULL;
+	//int i = 0;
+	//while (q || i < pos)
+	//{
+	//	pre = q;
+	//	i++;
+	//	q = q->pNext;
+	//}
+	//if (!q)
+	//{
+	//	return NULL;
+	//}
+	//pre->pNext = q->pNext;
+	//return q;
+}
+
+//遍历
+void ShowLinkList(LinkListNode* pHead)
+{
+	if (!pHead)
+	{
+		return;
+	}
+	LinkListNode* ptr = pHead->pNext;
+	printf("---------------LinkList--------------\r\n");
+	while (ptr)
+	{
+		printf("%d\r\n", ptr->data);
+		ptr = ptr->pNext;
+	}
+	printf("---------------LinkList--------------\r\n");
+}
+
+
 //int main()
 //{
 //	LinkListNode* xPtr, * yPtr, * p;
