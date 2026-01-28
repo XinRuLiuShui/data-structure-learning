@@ -63,7 +63,7 @@ LinkListNode* GetNodeFromLinkList(LinkListNode* pHead, int pos)
 
 //查元素 查找给定值的下标位置，有重复的取第一个找到的下标值
 //返回FALSE(-1)表示没有找到
-LinkListNode* LocateElemOfSeq(LinkListNode* pHead, ElemType key)
+LinkListNode* LocateNodeOfLinkListNode(LinkListNode* pHead, ElemType key)
 {
 	if (!pHead)
 	{
