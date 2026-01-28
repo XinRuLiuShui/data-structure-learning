@@ -2,7 +2,7 @@
 
 void ReserveLinkList(LinkListNode* pHead)
 {
-	if (!pHead)
+	if (!pHead || !pHead->pNext)
 	{
 		return;
 	}
@@ -12,7 +12,6 @@ void ReserveLinkList(LinkListNode* pHead)
 	while (point)
 	{
 		next = point->pNext;
-
 		point->pNext = back;
 		back = point;
 		point = next;
