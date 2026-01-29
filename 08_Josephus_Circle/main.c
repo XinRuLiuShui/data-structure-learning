@@ -8,8 +8,9 @@ typedef struct node {
 }JoeLinkListNode;
 
 
-//头插法创建单链表
+//尾插法创建单链表
 //arr:传入的顺序表 length:顺序表的长度
+//没有头节点，第一个节点便是有数据的节点
 JoeLinkListNode* CreateLinkList(int arr[], int length)
 {
 	JoeLinkListNode* pHead, * p, * q;
