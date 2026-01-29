@@ -39,26 +39,33 @@ int main()
 	JoeLinkListNode* pre, * next;
 	JoeLinkListNode* cur = HeadNode;
 	int start = 1;	//从第一个人开始
-	int sum = 30;
-	int survivors = 15;	//剩余15人
+	int sum = 30;	//开始时的总人数
+	int survivors = 15;	//最后剩余的人数
 	int key = 9;	//逢9退出
 
-	pre = NULL;
+	pre = HeadNode;
 	next = NULL;
-	while (sum > 15)
+	while (sum > survivors)
 	{
-		for (int i = 1; i <= key; i++)
+		//错误代码
+		//for (int i = 1; i <= key; i++)
+		//{
+		//	pre = cur;
+		//	cur = cur->pNext;
+		//	next = cur->pNext;
+		//}
+		
+		for (int i = 0; i < key - 1; i++)
 		{
-			pre = cur;
-			cur = cur->pNext;
-			next = cur->pNext;
+			pre = pre->pNext;
 		}
-		//next = cur->pNext;
+		cur = pre->pNext;
+		next = cur->pNext;
+
 		// 删除cur结点
 		pre->pNext = next;
 		printf("删除节点%d \n", cur->data);
-		//free(cur);
-
+		free(cur);
 		sum--;
 	}
 }
